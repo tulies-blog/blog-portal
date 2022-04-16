@@ -1,0 +1,63 @@
+@import "~@/assets/styles/variables.scss";
+
+.articlePage {
+  position: relative;
+  :global {
+    .article-suspended-panel {
+      position: fixed;
+      margin-left: -80px;
+      top: 120px;
+      z-index: 2;
+      .panel-btn {
+        position: relative;
+        margin-bottom: 24px;
+        width: 46px;
+        height: 46px;
+        background-color: #fff;
+        background-position: 50%;
+        background-repeat: no-repeat;
+        border-radius: 50%;
+        box-shadow: 0 2px 4px 0 rgb(0 0 0 / 4%);
+        cursor: pointer;
+        text-align: center;
+        font-size: 16px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        svg {
+          font-size: 20px;
+          color: #8a919f;
+        }
+        &:after {
+          content: attr(data-badge);
+          position: absolute;
+          top: 0;
+          left: 75%;
+          height: 17px;
+          line-height: 17px;
+          padding: 0 5px;
+          border-radius: 9px;
+          font-size: 11px;
+          text-align: center;
+          white-space: nowrap;
+          background-color: #c2c8d1;
+          color: #fff;
+        }
+        &:hover {
+          svg {
+            color: #515767;
+          }
+        }
+        &.active {
+          color: $primary-color;
+          svg {
+            color: $primary-color;
+          }
+          &::after {
+            background-color: $primary-color;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,50 @@
+@import "./variables.scss";
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, system-ui, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif, BlinkMacSystemFont,
+    "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Arial;
+  background-color: #f4f5f5 !important;
+  color: #333;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  &:focus {
+    outline-style: none;
+  }
+  // &:hover {
+  //   color: $primary-hover-color !important;
+  // }
+
+  // &:active {
+  //   color: $link-active-color !important;
+  // }
+}
+
+.link-normal {
+  color: inherit;
+  &:hover {
+    color: $primary-hover-color;
+  }
+
+  &:active {
+    color: $link-active-color;
+  }
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+}
+li {
+  list-style: none;
+}
+input::placeholder {
+  color: #bbb;
+}
