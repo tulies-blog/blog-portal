@@ -2,6 +2,7 @@ import { Article, articleDigg } from "@/servers/article";
 import { getDateDiff } from "@/utils/fn";
 import { useDidUpdateEffect } from "@/utils/hooks/useDidUpdateEffect";
 import { useThrottleFn } from "ahooks";
+// import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
 import styles from "./index.module.scss";
@@ -42,6 +43,9 @@ const ArticleItem: React.FC<ArticleItemProps> = (props) => {
   function handleArticle() {
     window.open(`/article/${article.id}`);
   }
+  function stopPropagation(e: React.MouseEvent<HTMLElement, MouseEvent>) {
+    e.stopPropagation();
+  }
   return (
     <div className={styles.articleWrapper} onClick={handleArticle}>
       <div className="article-item-content">
@@ -49,13 +53,17 @@ const ArticleItem: React.FC<ArticleItemProps> = (props) => {
           <div className="date">{getDateDiff(article.createTime)}</div>
           <div className="tag-list">
             <Link href={`/cate/${article.category.urlName}`}>
-              <a className="tag link-normal">{article.category.name}</a>
+              <a className="tag link-normal" onClick={stopPropagation}>
+                {article.category.name}
+              </a>
             </Link>
           </div>
           <div className="tag-list">
             {article.tags.split(",").map((d) => (
               <Link key={d} href={`/tag/${d}`}>
-                <a className="tag link-normal">{d}</a>
+                <a className="tag link-normal" onClick={stopPropagation}>
+                  {d}
+                </a>
               </Link>
             ))}
           </div>
@@ -91,7 +99,8 @@ const ArticleItem: React.FC<ArticleItemProps> = (props) => {
               </li>
             </ul>
           </div>
-          {article.poster && <img src={article.poster} alt="渣本毕业的我，2021年终于进了大厂" className="lazy thumb" />}
+          {/* <img src={article.poster} alt={article.title} className="thumb" /> */}
+          {article.poster && <img src={article.poster} alt={article.title} className="thumb" />}
         </div>
       </div>
     </div>
