@@ -7,6 +7,9 @@ import zhCN from "antd/lib/locale/zh_CN";
 import moment from "moment";
 import "moment/locale/zh-cn";
 import { useEffect } from "react";
+import wx from "weixin-js-sdk";
+import { wxInit, updateAppMessageShareData } from "@/utils/wx";
+// import Script from "next/script";
 moment.locale("zh-cn");
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -28,7 +31,18 @@ function MyApp({ Component, pageProps }: AppProps) {
       });
       sessionStorage.setItem("notification", "1");
     }
-  });
+
+    // 注册微信JS-SDK配置
+    wxInit();
+    wx.ready(() => {
+      updateAppMessageShareData({
+        title: "王嘉炀·个人博客",
+        desc: "希望能有一天能把写代码变成纯粹的兴趣，不在为生活而去写代码。",
+        link: location.href,
+        imgUrl: "http://www.wangjiayang.cn/stc/files/2022/04/5867afe1-f13f-40e8-97c1-c9a8c2b8a7c7.jpg",
+      });
+    });
+  }, []);
   return (
     <>
       <Head>
@@ -45,6 +59,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <Component {...pageProps} />
         <BackTop />
       </ConfigProvider>
+      {/* <Script src="http://res.wx.qq.com/open/js/jweixin-1.6.0.js"></Script> */}
     </>
   );
 }
