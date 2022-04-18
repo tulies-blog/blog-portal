@@ -7,7 +7,7 @@ import zhCN from "antd/lib/locale/zh_CN";
 import moment from "moment";
 import "moment/locale/zh-cn";
 import { useEffect } from "react";
-import wx from "weixin-js-sdk";
+import wx from "@tulies/weixin-js-sdk";
 import { wxInit, updateAppMessageShareData } from "@/utils/wx";
 // import Script from "next/script";
 moment.locale("zh-cn");
@@ -55,11 +55,12 @@ function MyApp({ Component, pageProps }: AppProps) {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      {/* <Script src="http://res.wx.qq.com/open/js/jweixin-1.6.0.js"></Script> */}
+
       <ConfigProvider locale={zhCN}>
         <Component {...pageProps} />
         <BackTop />
       </ConfigProvider>
-      {/* <Script src="http://res.wx.qq.com/open/js/jweixin-1.6.0.js"></Script> */}
     </>
   );
 }

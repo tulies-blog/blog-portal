@@ -1,4 +1,4 @@
-import wx from "weixin-js-sdk";
+import wx from "@tulies/weixin-js-sdk";
 import { wxJsapiSignature } from "@/servers/wx";
 
 // 用户注销

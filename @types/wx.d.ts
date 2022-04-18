@@ -750,6 +750,6 @@ declare namespace WeixinJsSdk {
   function chooseWXPay(options: ChooseWXPayOptions): void;
 }
 
-declare module "weixin-js-sdk" {
+declare module "@tulies/weixin-js-sdk" {
   export = WeixinJsSdk;
 }

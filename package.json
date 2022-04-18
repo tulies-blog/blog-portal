@@ -13,6 +13,7 @@
     "*.{js,css,md,ts,tsx}": "prettier --write"
   },
   "dependencies": {
+    "@tulies/weixin-js-sdk": "^1.6.0-beta.0",
     "@types/lodash": "^4.14.181",
     "@zeit/next-css": "^1.0.1",
     "ahooks": "^3.3.0",
@@ -23,8 +24,7 @@
     "next": "12.0.10",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "uuid": "^8.3.2",
-    "weixin-js-sdk": "^1.6.0"
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "@commitlint/cli": "^16.1.0",

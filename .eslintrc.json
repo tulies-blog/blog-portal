@@ -10,5 +10,8 @@
     "prettier/prettier": "error",
     "@next/next/no-img-element":"off",
     "@typescript-eslint/no-unused-vars":"error"
+  },
+  "globals": {
+    "wx":"readonly"
   }
 }
