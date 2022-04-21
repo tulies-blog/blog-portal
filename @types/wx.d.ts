@@ -3,6 +3,8 @@ declare namespace WeixinJsSdk {
    * Type definations
    ****************************************************************************/
   type JSApis =
+    | "updateAppMessageShareData"
+    | "updateTimelineShareData"
     | "onMenuShareTimeline"
     | "onMenuShareAppMessage"
     | "onMenuShareQQ"
@@ -515,6 +517,15 @@ declare namespace WeixinJsSdk {
   /** **************************************************************************
    * 分享接口
    ****************************************************************************/
+  /**
+   * 获取“分享到朋友圈”按钮点击状态及自定义分享内容接口
+   */
+  function updateTimelineShareData(options: OnMenuShareTimelineOptions): void;
+
+  /**
+   * 获取“分享给朋友”按钮点击状态及自定义分享内容接口
+   */
+  function updateAppMessageShareData(options: OnMenuShareAppMessageOptions): void;
 
   /**
    * 获取“分享到朋友圈”按钮点击状态及自定义分享内容接口

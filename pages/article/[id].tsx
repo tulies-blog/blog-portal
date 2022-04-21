@@ -17,6 +17,7 @@ import IconFont from "@/components/IconFont";
 import { useThrottleFn } from "ahooks";
 import { useRouter } from "next/router";
 import AuthorInfo from "@/components/BizView/AuthorInfo";
+import { setShareData, wxReadly } from "@/utils/wx";
 
 // import { getQueryString } from "@/utils/fn";
 interface ArticlePageProps {
@@ -30,51 +31,20 @@ const ArticlePage: NextPage<ArticlePageProps> = ({ articleInfo, articleHtml, art
   const [article, setArticle] = useState(articleInfo?.data);
   const router = useRouter();
   const id = router.query.id as string;
-  // const id = getQueryString("id");
-  //   const [tocTree, setTocTree] = useState<TocItem[]>([]);
-  //   function markedContent(content: string) {
-  //     const toclist: TocItem[] = [];
-  //     // Get reference
-  //     const renderer = new marked.Renderer();
-  //     // Override function
-  //     // renderer.heading = function (text: string, level: number) {
-  //     //   // var escapedText = text.toLowerCase().replace(/[^\w]+/g, '-')
-  //     //   let escapedText = text
-  //     //     .toLowerCase()
-  //     //     .replace(/[^(\u4E00-\u9FA5A-Z0-9a-z)]+/g, "");
-  //     //   escapedText = pinyin.getFullChars(escapedText).substring(0, 32);
-  //     //   // const rd = utils.getUUID()
-  //     //   // const aname = escapedText
-  //     //   return `
-  //     //            <h${level} data-id="${escapedText}" title="${text}">
-  //     //              <a name="${escapedText}" className="heading-anchor" href="#${escapedText}">
-  //     //                <span className="header-link"></span>
-  //     //              </a>
-  //     //              ${text}
-  //     //            </h${level}>`;
-  //     // };
-  //     renderer.heading = function (text: string, level: number) {
-  //       const escapedText = text.replace(/[^(\u4E00-\u9FA5A-Z0-9a-z)]+/g, "-");
-  //       // const rd = utils.getUUID()
-  //       // const aname = escapedText
-  //       console.log(text, level);
-  //       toclist.push({ id: escapedText, text, level });
-  //       return `<h${level} id="${escapedText}" title="${text}">
-  //                  ${text}
-  //                </h${level}>`;
-  //     };
-  //     marked.setOptions({ breaks: true, renderer });
-  //     // return marked(content);
-  //     const html = marked(content);
-  //     const tocs = createToc(toclist);
-  //     setTocTree(tocs);
-  //     return <div dangerouslySetInnerHTML={{ __html: html }}></div>;
-  //   }
   useEffect(() => {
-    console.log(articleInfo?.data);
+    // console.log(articleInfo?.data);
     articleVisit(id);
     getArticleInfo(id).then((res) => {
       setArticle(res.data);
+      wxReadly(() => {
+        setTimeout(() => {
+          setShareData({
+            title: res.data.title,
+            desc: res.data.description,
+            imgUrl: res.data.poster,
+          });
+        }, 500);
+      });
     });
   }, [id]);
 
@@ -84,15 +54,6 @@ const ArticlePage: NextPage<ArticlePageProps> = ({ articleInfo, articleHtml, art
       articleDigg(article.id, article.isDigg ? 0 : 1).finally(() => {
         handleDiggCancel();
       });
-      // 直接执行，速度快点
-      // setArticle({
-      //   ...article,
-      //   diggCount: article.userInteract?.isDigg ? article.diggCount - 1 : article.diggCount + 1,
-      //   userInteract: {
-      //     ...article.userInteract,
-      //     isDigg: article.userInteract?.isDigg ? 0 : 1,
-      //   } as ArticleInteract,
-      // });
 
       setArticle({
         ...article,

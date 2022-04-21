@@ -59,5 +59,27 @@
         }
       }
     }
+
+    @media (max-width: 960px) {
+      .article-suspended-panel {
+        margin-left: 20px;
+        bottom: 30px;
+        top: auto;
+        .panel-btn {
+          // background-color: rgba(200, 200, 200, 0.8);
+          background-color: rgba(0, 0, 0, 0.5);
+          border: 1px solid #efefef;
+          svg {
+            font-size: 20px;
+            color: #eeeeee;
+          }
+          &:hover {
+            svg {
+              color: #ffffff;
+            }
+          }
+        }
+      }
+    }
   }
 }

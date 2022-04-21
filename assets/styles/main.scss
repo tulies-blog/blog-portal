@@ -414,13 +414,28 @@ $header-height: 3.7rem;
 
     // background: #fff;
   }
-  @media (max-width: 1024px) {
+  @media (max-width: 960px) {
     .aside {
       display: none;
     }
   }
 }
 
+@media (max-width: 640px) {
+  .main-constainer {
+    flex-direction: column;
+    margin-bottom: -16px;
+    .main-content {
+      width: 100%;
+      margin-bottom: 16px;
+    }
+    .aside {
+      width: 100%;
+      display: block;
+      margin-left: 0;
+    }
+  }
+}
 /** 侧边栏卡片 **/
 .sidebar-block {
   margin-bottom: 1rem;

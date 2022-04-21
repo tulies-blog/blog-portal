@@ -7,8 +7,9 @@ import zhCN from "antd/lib/locale/zh_CN";
 import moment from "moment";
 import "moment/locale/zh-cn";
 import { useEffect } from "react";
-import wx from "@tulies/weixin-js-sdk";
-import { wxInit, updateAppMessageShareData } from "@/utils/wx";
+// import wx from "@tulies/weixin-js-sdk";
+import { setShareData, wxInit, wxReadly } from "@/utils/wx";
+import Script from "next/script";
 // import Script from "next/script";
 moment.locale("zh-cn");
 
@@ -34,14 +35,21 @@ function MyApp({ Component, pageProps }: AppProps) {
 
     // 注册微信JS-SDK配置
     wxInit();
-    wx.ready(() => {
-      updateAppMessageShareData({
+    wxReadly(() => {
+      setShareData({
         title: "王嘉炀·个人博客",
         desc: "希望能有一天能把写代码变成纯粹的兴趣，不在为生活而去写代码。",
         link: location.href,
-        imgUrl: "http://www.wangjiayang.cn/stc/files/2022/04/5867afe1-f13f-40e8-97c1-c9a8c2b8a7c7.jpg",
       });
     });
+    // wx.ready(() => {
+    //   console.log("233-----------");
+    //   setShareData({
+    //     title: "王嘉炀·个人博客",
+    //     desc: "希望能有一天能把写代码变成纯粹的兴趣，不在为生活而去写代码。",
+    //     link: location.href,
+    //   });
+    // });
   }, []);
   return (
     <>
@@ -55,7 +63,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      {/* <Script src="http://res.wx.qq.com/open/js/jweixin-1.6.0.js"></Script> */}
+      <Script src="https://hm.baidu.com/hm.js?4ad4bbdc6358179dcaa8730e908d407a"></Script>
 
       <ConfigProvider locale={zhCN}>
         <Component {...pageProps} />
