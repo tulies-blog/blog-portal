@@ -27,7 +27,7 @@ module.exports = withPlugins([[pluginAntdLess]], {
     return config;
   },
   images: {
-    domains: ["p1-juejin.byteimg.com"],
+    domains: ["*"],
   },
   async rewrites() {
     return [
@@ -35,12 +35,17 @@ module.exports = withPlugins([[pluginAntdLess]], {
         // source: "/app/",
         // destination: "http://127.0.0.1:8080/app",
         source: "/api/:path*",
-        destination: "http://127.0.0.1:9898/:path*",
+        // destination: "http://127.0.0.1:9898/:path*",
+        // destination: "http://1.15.57.174:9898/:path*",
+        destination: `${process.env.BASE_API}/:path*`,
+
         basePath: false,
       },
       {
         source: "/stc/:path*",
-        destination: "http://127.0.0.1:9898/stc/:path*",
+        // destination: "http://127.0.0.1:9898/stc/:path*",
+        // destination: "http://1.15.57.174:9898/:path*",
+        destination: `${process.env.BASE_API}/:path*`,
         basePath: false,
       },
     ];
