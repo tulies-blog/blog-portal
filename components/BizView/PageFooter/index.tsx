@@ -8,7 +8,7 @@ const PageFooter = () => {
         <div className="footer-copyright-left">
           <p>Copyright©2022 王嘉炀·个人博客 wangjiayang.cn</p>
           <p>
-            <a href="http://www.miitbeian.gov.cn/publish/query/indexFirst.action">沪ICP备2022011465号-1</a>
+            <a href="https://beian.miit.gov.cn/">沪ICP备2022011465号-1</a>
           </p>
         </div>
         <div className="footer-copyright-right">

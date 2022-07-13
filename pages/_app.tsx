@@ -23,15 +23,15 @@ function MyApp({ Component, pageProps }: AppProps) {
         "你的浏览器版本太低了,已经和时代脱轨了 :(\n可能会导致您的页面无法访问\n推荐使用:谷歌,火狐等其他浏览器";
       alert(str);
     }
-    if (!sessionStorage.getItem("notification")) {
-      notification.info({
-        message: `提示`,
-        description: "本站目前正在开发中，功能并未完善，若有问题，请见谅！若有建议，可在留言区给我留言，谢谢！",
-        placement: "bottom",
-        duration: null,
-      });
-      sessionStorage.setItem("notification", "1");
-    }
+    // if (!sessionStorage.getItem("notification")) {
+    //   notification.info({
+    //     message: `提示`,
+    //     description: "本站目前正在开发中，功能并未完善，若有问题，请见谅！若有建议，可在留言区给我留言，谢谢！",
+    //     placement: "bottom",
+    //     duration: null,
+    //   });
+    //   sessionStorage.setItem("notification", "1");
+    // }
 
     // 注册微信JS-SDK配置
     wxInit();
