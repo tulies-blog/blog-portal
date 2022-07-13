@@ -2,7 +2,7 @@ import Head from "next/head";
 import type { AppProps } from "next/app";
 import "../assets/styles/bootstrap.scss";
 // import "antd/dist/antd.css";
-import { BackTop, ConfigProvider, notification } from "antd";
+import { BackTop, ConfigProvider } from "antd";
 import zhCN from "antd/lib/locale/zh_CN";
 import moment from "moment";
 import "moment/locale/zh-cn";
