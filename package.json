@@ -7,7 +7,9 @@
     "start": "next start",
     "lint": "next lint",
     "lint-fix": "next lint --fix",
-    "postinstall": "husky install"
+    "postinstall": "husky install",
+    "pm2:start": "pm2 start \"npm run start\" --name blog-portal",
+    "pm2:stop": "pm2 stop blog-portal && pm2 delete blog-portal"
   },
   "lint-staged": {
     "*.{js,css,md,ts,tsx}": "prettier --write"

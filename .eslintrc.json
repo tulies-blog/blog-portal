@@ -9,7 +9,9 @@
     // I suggest you add those two rules:
     "prettier/prettier": "error",
     "@next/next/no-img-element":"off",
-    "@typescript-eslint/no-unused-vars":"error"
+    "@typescript-eslint/no-unused-vars":"error",
+    "@typescript-eslint/no-explicit-any":"off",
+    "react-hooks/exhaustive-deps":"off"
   },
   "globals": {
     "wx":"readonly"
